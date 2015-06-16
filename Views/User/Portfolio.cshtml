@@ -1,0 +1,58 @@
+﻿@model List<GDSite.Models.Portfolio>
+@{
+    ViewBag.Title = "Portfolio";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if(Session["uID"]!=null)
+{ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="~/Content/css/modern-business.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>Portfolio</title>
+</head>
+
+
+<body>
+
+    <div class="container">
+        @foreach (var p in Model) { 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    @p.DAccount.name
+                    <small>Portfolio</small>
+                </h1>
+              
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="#">
+                    <img class="img-responsive" src=@p.image1 width="500" height="450" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h2>@p.portfolioName</h2><br/>
+                <a class="btn btn-default" href="/User/Detail?id=@p.Id">View Detail</a>
+            </div>
+        </div>
+            <br/><br/><hr /><br/>
+        }
+      </div>
+</body>
+
+
+</html>
+    }
+else
+{
+<h2>ONLY FOR AUTHORIZED USERS</h2>
+}

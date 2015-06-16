@@ -1,0 +1,129 @@
+﻿@model GDSite.Models.Portfolio
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_DesignerLayout.cshtml";
+}
+
+
+<div class="container">
+    <div><br /><br /><br /></div>
+    <div class="row">
+        <div class="col-md-8">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="img-responsive" width="750" height="500" src=@Model.image1 alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive" width="750" height="500" src=@Model.image2 alt="">
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive" width="750" height="500" src=@Model.image3 alt="">
+                    </div>
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Project Title</h2>
+            <p><font size="3">@Model.portfolioName</font></p>
+            <br /><br />
+            <h2>Project Description</h2>
+            <p><font size="3">@Model.projDesc</font></p>
+            <br /><br />
+            <h2>Project Details</h2>
+            <ul>
+                <li><font size="3">@Model.projDetail</font></li>
+              
+            </ul>
+            <br /><br /><br /><br /><br />
+            <a class="btn btn-success" href="/Designer/EditDetail?id=@Model.Id">Edit Details</a>
+            <a class="btn btn-danger" href="/Designer/Delete?id=@Model.Id">Delete Project</a>
+          
+         
+              
+        </div>
+         
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-8">
+        <header>
+            <h3>
+                @Model.Likes.Count() Likes
+            </h3>
+        </header>
+    </div>  
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+        <div class="grids_of_2">
+            <h2>Comments</h2>
+            @foreach (var r in Model.Comments)
+            {
+                <div class="grid1_of_2">
+                    @if (r.type == "user") { 
+                    <div class="grid_img">
+                        <a href=""><img style="max-width:100px; " width="65" height="65" src=@r.UAccount.image class="img-circle"></a>
+                    </div>
+                    <div class="grid_text">
+                        
+                        <h4 class="style1 list"><a href="#">@r.UAccount.name</a></h4>
+                        <p><font size="2"> @r.comment1</font></p><br /><br />
+                    </div>
+                    <div class="clear"></div>
+                    }
+                    else
+                    {
+                        <div class="grid_img">
+                        <a href=""><img style="max-width:100px; " width="65" height="65" src=@r.DAccount.image class="img-circle"></a>
+                    </div>
+                    <div class="grid_text">
+                        
+                        <h4 class="style1 list"><a href="#">@r.DAccount.name</a></h4>
+                        <p><font size="2"> @r.comment1</font></p><br /><br />
+                    </div>
+                    <div class="clear"></div>
+                    }
+                </div>
+
+            }
+            <div class="artical-commentbox">
+                <h2>Leave a Comment</h2>
+                <div class="table-form">
+
+                    <form action="PostComment" method="post">
+                        <font size="3">
+                            <div>
+                                @Html.Label("Comment *")
+                                <input type="hidden" name="pid" value=@Model.Id />
+                                <textarea rows="10" cols="100" name="comment"> </textarea>
+                            </div>
+                            <input type="submit" value="Post" style="background-color:black;color:white">
+                        </font>
+                    </form>
+
+
+                </div>
+                <div class="clear"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+

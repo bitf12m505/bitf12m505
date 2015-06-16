@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Designers";
+    Layout = "~/Views/Shared/_User_Layout.cshtml";
+}
+@model List<GDSite.Models.DAccount>
+@if(Session["uID"]!=null)
+{
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="~/Content/css/modern-business.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>Designers</title>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                   Designers and Photographers
+                </h1>
+
+            </div>
+        </div>
+        @foreach(GDSite.Models.DAccount d in Model)
+        { 
+        <div class="row">
+            <div class="col-md-5">
+                <a href="#">
+                    <img class="img-responsive  img-rounded" src=@d.image width="500" height="150" alt="">
+                </a>
+            </div>
+            <div class="col-md-7">
+                <h2>@d.name</h2>
+                <p><font size="3">Type: @d.type</font></p>
+                <p><font size="3">tel:+@d.number</font></p>
+                <p><font size="3">Address: @d.address</font></p>
+                @{  int uid=(int)Session["UId"];
+                    GDSite.Models.Favourty f=d.Favourties.FirstOrDefault(s=>s.dId==d.Id & s.userId==uid);
+                  if(f==null)
+                  {
+                <a class="btn btn-default" href="/User/AddToFavourties?dId=@d.Id&userId=@Session["UId"]">Add To Favourties</a>
+                }
+                }
+            </div>
+        </div>
+            <br/> <br/>
+        }
+    </div>
+</body>
+
+
+</html>
+    }
+else
+{
+<h2>ONLY FOR AUTHORIZED USERS</h2>
+}

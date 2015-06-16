@@ -1,0 +1,61 @@
+﻿@model GDSite.Models.DAccount
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="container"><br /><br /><br /><br /><br /><br /></div>
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-2">
+        <a><img src=@Model.image class="img-circle" width="200" height="200"/></a>
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="container col-md-5 center">
+
+
+            <h3><font style=" color:orangered" size="5">Profile</font></h3><br />
+            <font size="4" style="font-family:Calibri">
+                <div class=" form-group">
+                    @Html.Label(" Name:  ")
+                    @Model.name
+
+                </div>
+                <div class="form-group">
+                    @Html.Label("Phone Number:  ")
+                    @Model.number
+
+                </div>
+                <div class="form-group">
+                    @Html.Label("Address:  ")
+                    @Model.address
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Password:  ")
+                    @Model.password
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Gender:  ")
+                    @Model.gender
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Type:  ")
+                    @Model.type
+
+                </div>
+            
+            </font>
+            <a class="btn btn-success" href="EditProfile">Edit Info</a>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

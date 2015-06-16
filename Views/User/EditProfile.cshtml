@@ -1,0 +1,85 @@
+﻿@model GDSite.Models.UAccount
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="container"><br /><br /><br /><br /><br /><br /></div>
+   <div class="row">
+        <div class="col-md-1">
+        </div>
+@using (Html.BeginForm("EProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+        <div class="col-md-2">
+            <a><img src=@Model.image class="img-circle" width="200" id="blah" height="200" /></a>
+            <p style="font-size:large">Change Picture</p>
+            @Html.TextBoxFor(m => m.image, new { style = "width:90%", type = "file", onchange = "readURL(this);" })
+
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="container col-md-5 center">
+
+
+            <h3><font style=" color:orangered" size="6">Profile</font></h3><br />
+            <font size="4" style="font-family:Calibri">
+
+                @Html.TextBoxFor(m => m.Id, new { type = "hidden"})
+                @Html.TextBoxFor(m => m.gender, new { type = "hidden" })
+                <div class=" form-group">
+                    @Html.Label("Email:  ")
+                    @Html.TextBoxFor(m => m.email, new { @class = "form-control", style = "width:90%" })
+                </div>
+
+                <div class=" form-group">
+                    @Html.Label("User Name:  ")
+                    @Html.TextBoxFor(m => m.name, new { @class = "form-control", style = "width:90%" })
+                </div>  
+
+                <div class="form-group">
+                    @Html.Label("Phone Number:  ")
+                    <a>&emsp;</a>
+                    @Html.TextBoxFor(m => m.number, new { @class = "form-control", style = "width:90%" })
+
+                </div>
+                <div class="form-group">
+                    @Html.Label("Address:     ")
+                    <a>&emsp;</a>
+                    @Html.TextBoxFor(m => m.address, new { @class = "form-control", style = "width:90%" })
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Password:  ")
+                    <a>&emsp;</a>
+                    @Html.TextBoxFor(m => m.password, new { @class = "form-control", style = "width:90%" })
+
+                </div>
+            </font>
+       
+                <button class="btn btn-success">Save Changes</button>
+        </div>
+}
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                .attr('src', e.target.result)
+                .width(200)
+                .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }</script>  

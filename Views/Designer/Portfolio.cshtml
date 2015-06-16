@@ -1,0 +1,45 @@
+﻿@model List<GDSite.Models.Portfolio>
+
+@{
+    ViewBag.Title = "Portfolio";
+
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Portfolio</title>
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    My Portfolios
+                </h1>
+
+            </div>
+        </div>
+        @foreach(GDSite.Models.Portfolio p in Model)
+        { 
+        <div class="row">
+            <div class="col-md-6">
+                <a href="#">
+                    <img class="img-responsive" src=@p.image1 alt="" width="500" height="250">
+                </a>
+            </div>
+            <div class="col-md-6">
+
+                <h2>@p.portfolioName</h2><br />
+                <a class="btn btn-default" href="/Designer/Detail?id=@p.Id">View Detail</a>
+            </div>
+        </div>
+            <br/><br/><hr /><br/><br/>
+        }
+    </div>
+</body>
+
+
+</html>

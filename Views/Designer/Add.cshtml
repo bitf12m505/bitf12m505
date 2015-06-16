@@ -1,0 +1,49 @@
+﻿@model GDSite.Models.Portfolio
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_DesignerLayout.cshtml";
+}
+
+<div class="container"><br /><br /><br /><br /><br /><br /></div>
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="container col-md-4 center">
+
+        @using (Html.BeginForm("AddPortfolio", "Designer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        { 
+            <h3><font style="font-family:Calibri; color:orangered">Add New Portfolio</font></h3><br/>
+            <font size="3" style="font-family:Calibri"><div class=" form-group">
+                @Html.Label("Enter Portfolio Name")
+                @Html.TextBoxFor(m => m.portfolioName, new { @class = "form-control" , required=""})
+
+</div>
+            <div class="form-group">
+                @Html.Label("Enter Description")
+                @Html.TextAreaFor(m => m.projDesc, new { @class = "form-control", required = "" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("Enter Detail")
+                @Html.TextAreaFor(m => m.projDetail, new { @class = "form-control", required = "" })
+        
+            </div>
+            <div class="form-group">
+                @Html.Label("Images")
+                @Html.TextBoxFor(m => m.image1, new { type = "file", required="" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.image2, new { type = "file" ,  required=""})
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.image3, new { type = "file", required = "" })
+            </div>
+            </font>
+            <button type="submit" class="btn btn-success">Add Portfolio</button>
+        }
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
