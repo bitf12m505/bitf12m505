@@ -93,7 +93,7 @@
                 @Html.TextBoxFor(m => m.name, new { @class = "form-control", placeholder = "Enter Name" }) <br />
                 <font size="3" color="red">   @Html.ValidationMessageFor(m => m.name)</font>
                 <label for="inputEmail" class="sr-only">Email address</label>
-                @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "Enter Email" }) <br />
+                @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "Enter Email" ,type="email"}) <br />
                 <font size="3" color="red">  @Html.ValidationMessageFor(m => m.email) </font>
 
             
@@ -102,7 +102,7 @@
                 <font size="3" color="red">@Html.ValidationMessageFor(m => m.password)</font>
 
 
-                @Html.TextBoxFor(m => m.confirmPass, new { @class = "form-control", placeholder = "Enter Password Again", type = "password" }) <br />
+              @Html.TextBoxFor(m => m.confirmPass, new { type="password", @class="form-control", placeholder="Enter password again"})
                 <font size="3" color="red">  @Html.ValidationMessageFor(m => m.confirmPass) </font>
 
 
